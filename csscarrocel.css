@@ -1,0 +1,76 @@
+:root {
+  --carrossel-width: 90%;
+  --carrossel-height: 350px;
+  --seta-bg: rgba(0, 0, 0, 0.5);
+  --seta-hover-bg: #555;
+  --seta-color: white;
+  --seta-size: 2rem;
+  --seta-padding: 10px;
+  --transition-speed: 0.5s;
+}
+
+/* Container do carrossel */
+.carrossel-container {
+  border-radius: 30px;
+  background-color: rgb(253, 253, 253);
+  position: relative;
+  width: var(--carrossel-width);
+  height: var(--carrossel-height);
+  margin: auto;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height var(--transition-speed) ease, opacity var(--transition-speed) ease;
+}
+
+/* Estado ativo com animação */
+.carrossel-container.ativo {
+  max-height: 1000px;
+  opacity: 1;
+  margin-top: 10px;
+}
+
+/* Carrossel interno */
+.carrossel {
+  display: flex;
+  transition: transform var(--transition-speed) ease-in-out;
+}
+
+/* Slides */
+.slide {
+  min-width: 100%;
+  box-sizing: border-box;
+  display: none;
+  background-size: cover;
+}
+
+.slide.ativo {
+  display: block;
+}
+
+/* Botões de navegação */
+.seta {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--seta-bg);
+  color: var(--seta-color);
+  border: none;
+  font-size: var(--seta-size);
+  padding: var(--seta-padding);
+  cursor: pointer;
+  z-index: 1;
+  border-radius: 4px;
+}
+
+.seta.esquerda {
+  left: 10px;
+}
+
+.seta.direita {
+  right: 10px;
+}
+
+.seta:hover {
+  background-color: var(--seta-hover-bg);
+}
